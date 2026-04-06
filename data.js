@@ -331,3 +331,5 @@ const products =
           "category": "casual"
         }
       ]
+
+      export default products;
