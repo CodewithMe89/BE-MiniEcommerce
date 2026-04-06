@@ -1,23 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Ecommerce</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+      <h1 class="logo">BE-commerce</h1>
+      <ul>
+        <li><a href="/" class="nav-pill">Home</a></li>
+        <li><a href="/" class="nav-pill active">Products</a></li>
+        <li><a href="/" class="nav-pill">Cart</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
+  </header>
+
+  <main>
+    <section id="filters">
+      <h2>Our Range of Products</h2>
+      <div>
+        <select  id="gender-filter">
+          <option value="">-- Gender --</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+     <input type="text" id="searchInput" placeholder="Search...">
+    </section>
+    <div class="products-filter">
+      <section id="filters-tab">
+        <h2 class="filter-head">Filters</h2>
+        <br />
+        <h3 class="filter-head">Gender</h3>
+        <br />
+        <label>
+        <input type="radio" value="male" name="gender">Male
+      </label>
+      <br />
+      <label>
+        <input type="radio" value="female" name="gender">Female
+      </label>
+      <br />
+      <h3 class="filter-head">Rating ⭐</h3>
+      <br />
+      <input
+      id="rating-input"
+      type="range"
+      min="0"
+      max="5"
+      step="0.5"
+      value="0">
+      <br />
+      <p>Greater than: <span id="rating-value">0</span></p>
+      <br/>
+      <h3 class="filter-head">Category</h3>
+      <br/>
+      <label >
+        <input type="checkbox" class="category-checkbox" value="formal">
+        Formal
+      </label>
+      <br/>
+
+      <label >
+        <input type="checkbox" class="category-checkbox" value="casual">
+        Casual
+      </label>
+      <br/>
+
+      <label >
+        <input type="checkbox" class="category-checkbox" value="semi-casual">
+        Semi Casual
+      </label>
+      <br/>
+
+      <label >
+        <input type="checkbox" class="category-checkbox" value="party-wear">
+        Party Wear
+      </label>
+      <br/>
+
+      <label >
+        <input type="checkbox" class="category-checkbox" value="sports-wear">
+        Sports Wear
+      </label>
+      <br/>
+      <button id="clearBtn" class="product-button">Clear</button>
+      </section>
+    </div>
+    <section id="productDisplay"></section>
+  </main>
+  <script src="script.js"></script>
+</body>
 </html>
