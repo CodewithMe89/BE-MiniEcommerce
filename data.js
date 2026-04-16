@@ -331,4 +331,15 @@ const products = [
   }
 ];
 
-export default products;
+const productsWithDiscount = products.map((product) => {
+  const discountPercentage = product.price > 0 && product.discountPrice <= product.price
+  ? Math.round(((product.price - product.discountPrice) / product.price) * 100
+  ):0
+
+  return {
+    ...product,
+    discountPercentage
+  };
+});
+
+export default productsWithDiscount;
