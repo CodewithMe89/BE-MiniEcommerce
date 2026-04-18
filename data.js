@@ -320,7 +320,7 @@ const products = [
   },
   {
     id: 30,
-    imgUrl: "https://i.pinimg.com/736x/91/ef/ce/91efcec4bea376e159e68c2cccbba2ac.jpg",
+    imgUrl: "https://i.pinimg.com/736x/ad/c4/c7/adc4c76915c052d276d54886869c3130.jpg",
     name: "Men Printed T-Shirt",
     description: "Stylish printed tee",
     rating: 3.9,
