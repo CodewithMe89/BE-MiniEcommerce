@@ -23,7 +23,7 @@ const displayProduct = (products) => {
         <h3> ${currentProduct.name} </h3>
 
         <div class="card-rating-discount-strip">
-        <div class="stars>${currentProduct.rating} 🌟</div>
+        <div class="stars">${currentProduct.rating} 🌟</div>
         <span>₹${currentProduct.discountPercentage}% off</span>
         </div>
 
@@ -60,7 +60,7 @@ genderRadios.forEach((radios) => {
 rating.addEventListener('change', (e) => {
     const rating = Number(e.target.value);
     ratingValue.innerText = rating
-    const filteredProduct = products.filter((curr) => curr.rating === rating)
+    const filteredProduct = products.filter((curr) => curr.rating >= rating)
     displayProduct(filteredProduct)
     if (rating === 0) {
         displayProduct(products)
@@ -92,7 +92,7 @@ categorybox.forEach((checkbox) => {
                 selectCategory.push(cb.value)
             }
         });
-        if (selectCategory === 0) {
+        if (selectCategory.length === 0) {
             displayProduct(products)
             return;
         }
@@ -114,3 +114,14 @@ clearBtn.addEventListener('click', () => {
     displayProduct(products)
     console.log(displayProduct(products))
 })
+
+function getStars(rating){
+    let stars = '';
+    const full = Math.floor(rating);
+    const half = rating % 1 >= 0.5;
+    for (let i = 0; i < full; i++) {
+      stars += '★';
+    }
+    if (half) stars += '☆';
+    return stars;
+}

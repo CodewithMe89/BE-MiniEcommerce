@@ -83,7 +83,6 @@ ul li {
   border-radius: 12px;
   background: #fff;
   transition: all 0.3s ease;
-  /* overflow: hidden; */
   }
   .product-card img {
     width: 100%;
@@ -91,10 +90,12 @@ ul li {
     object-fit: cover;
     transition: transform 0.4s ease;
   }
+  .product-card img:hover{
+    transform:scale(1.08)
+  }
 
   .product-card:hover{
-    transform: translateY(-8px);
-    transform: scale(1.08);
+    transform: translateY(-8px) scale(1.03);
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   }
   
@@ -211,3 +212,8 @@ ul li {
     margin: 6px 0;
   }
 
+  .stars {
+    color: gold;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
