@@ -10,22 +10,29 @@ const categorybox = document.querySelectorAll('.category-checkbox');
 const clearBtn = document.getElementById('clearBtn');
 
 const displayProduct = (products) => {
-    productDisplay.innerHTML="";
+    productDisplay.innerHTML = "";
     products.forEach((currentProduct) => {
 
         const card = document.createElement('div')
         card.className = 'product-card'
         card.innerHTML = `
+        <div class="image-container">
         <img src="${currentProduct.imgUrl}" alt="${currentProduct.name}" />
+        </div>
+        
         <h3> ${currentProduct.name} </h3>
-        <p class="card-rating-discount-strip">
-        <span>${currentProduct.rating} 🌟</span>
+
+        <div class="card-rating-discount-strip">
+        <div class="stars>${currentProduct.rating} 🌟</div>
         <span>₹${currentProduct.discountPercentage}% off</span>
-        </p>
-        <p class="card-rating-discount-strip">
+        </div>
+
+    <div class="card-rating-discount-strip">
         <span class="price">₹${currentProduct.discountPrice}</span>
         <span class="original-price">₹${currentProduct.price}</span>
-        </p>
+    </div>
+
+    <button class="addtoCart"> Add To Cart </button>
         `
 
         productDisplay.append(card)
@@ -33,72 +40,72 @@ const displayProduct = (products) => {
 }
 displayProduct(products)
 
-genderSelection.addEventListener('change',(e)=>{
+genderSelection.addEventListener('change', (e) => {
     const filter = e.target.value
-    const filteredProduct = products.filter((curr)=> curr.gender===filter)
+    const filteredProduct = products.filter((curr) => curr.gender === filter)
     displayProduct(filteredProduct)
-    if(filter === ''){
+    if (filter === '') {
         displayProduct(products)
     }
 })
 
-genderRadios.forEach((radios)=>{
-    radios.addEventListener('change',(e)=>{
-        const selectGender=e.target.value;
-        const filteredProduct = products.filter((curr)=>curr.gender===selectGender)
-        displayProduct(filteredProduct) 
+genderRadios.forEach((radios) => {
+    radios.addEventListener('change', (e) => {
+        const selectGender = e.target.value;
+        const filteredProduct = products.filter((curr) => curr.gender === selectGender)
+        displayProduct(filteredProduct)
     })
 })
 
-rating.addEventListener('change',(e) => {
+rating.addEventListener('change', (e) => {
     const rating = Number(e.target.value);
-    ratingValue.innerText=rating
-    const filteredProduct = products.filter((curr) => curr.rating===rating)
+    ratingValue.innerText = rating
+    const filteredProduct = products.filter((curr) => curr.rating === rating)
     displayProduct(filteredProduct)
-    if(rating===0){
+    if (rating === 0) {
         displayProduct(products)
     }
 })
 
 searchInput.addEventListener('change', (e) => {
     const searchText = e.target.value.toLowerCase();
-  
+
     if (searchText === '') {
-      displayProduct(products);
+        displayProduct(products);
     }
 
     const filteredProducts = products.filter((product) => {
-      return (
-        product.name.toLowerCase().includes(searchText) ||
-        product.description.toLowerCase().includes(searchText)
-      );
+        return (
+            product.name.toLowerCase().includes(searchText) ||
+            product.description.toLowerCase().includes(searchText)
+        );
     });
     console.log(filteredProducts);
     displayProduct(filteredProducts);
-  });
+});
 
-  categorybox.forEach((checkbox) => {
-    checkbox.addEventListener('change',() => {
+categorybox.forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
         const selectCategory = [];
         categorybox.forEach((cb) => {
-            if(cb.checked){
+            if (cb.checked) {
                 selectCategory.push(cb.value)
             }
         });
-        if(selectCategory===0){
+        if (selectCategory === 0) {
             displayProduct(products)
             return;
         }
 
-        const filteredProduct = products.filter((p) => 
-        selectCategory.includes(p.category)
+        const filteredProduct = products.filter((p) =>
+            selectCategory.includes(p.category)
         )
         displayProduct(filteredProduct)
     })
-  })
+})
 
-  clearBtn.addEventListener('click',()=> {
-    genderSelection.value =''
+clearBtn.addEventListener('click', () => {
+    genderSelection.value = ''
     genderRadios.forEach((radio) => (radio.checked = false))
     categorybox.forEach((box) => (box.checked = false))
     rating.value = 0
@@ -106,4 +113,4 @@ searchInput.addEventListener('change', (e) => {
     searchInput.value = ''
     displayProduct(products)
     console.log(displayProduct(products))
-  })
+})
